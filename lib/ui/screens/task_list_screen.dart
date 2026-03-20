@@ -153,22 +153,17 @@ class _TaskListScreenState extends State<TaskListScreen> {
             );
           }
 
-          // Loading
           if (provider.isLoading) {
             return const Center(
               child: CircularProgressIndicator(color: Colors.indigo),
             );
           }
 
-          // Empty
           if (provider.tasks.isEmpty) {
             return const EmptyStateWidget();
           }
-
-          // Task list
           return Column(
             children: [
-              // Summary bar
               Container(
                 width: double.infinity,
                 padding:

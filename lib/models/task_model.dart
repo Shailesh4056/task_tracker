@@ -1,4 +1,4 @@
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';  // ✅ changed from hive/hive.dart
 
 part 'task_model.g.dart';
 
