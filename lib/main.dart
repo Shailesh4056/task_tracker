@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'providers/task_provider.dart';
 import 'services/hive_service.dart';
@@ -15,17 +16,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => TaskProvider(HiveService()),
-      child: MaterialApp(
-        title: 'Task Tracker',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorSchemeSeed: Colors.indigo,
-          useMaterial3: true,
-        ),
-        home: const TaskListScreen(),
-      ),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return ChangeNotifierProvider(
+          create: (_) => TaskProvider(HiveService()),
+          child: MaterialApp(
+            title: 'Task Tracker',
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              colorSchemeSeed: Colors.indigo,
+              useMaterial3: true,
+            ),
+            home: const TaskListScreen(),
+          ),
+        );
+      },
     );
   }
 }
